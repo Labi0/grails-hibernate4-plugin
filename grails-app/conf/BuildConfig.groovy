@@ -24,11 +24,16 @@ grails.project.dependency.resolution = {
         mavenLocal()
 		grailsCentral()
 		mavenRepo "http://repo.grails.org/grails/core"
+	  mavenRepo "https://repo.grails.org/grails/core"
+          if(isBuildSnapshot) {
+       	    mavenRepo "https://repo.grails.org/grails/libs-snapshots-local"
+          }
 	}
 
 	dependencies {
 
-        String datastoreVersion = '3.1.2.RELEASE'
+        //String datastoreVersion = '3.1.2.RELEASE'
+	String datastoreVersion = '3.1.3.BUILD-SNAPSHOT'
         String hibernateVersion = '4.3.5.Final'
 
         compile "org.grails:grails-datastore-core:$datastoreVersion",
@@ -63,7 +68,7 @@ grails.project.dependency.resolution = {
 			export = false
 		}
 
-		test ':scaffolding:1.0.0', {
+		test ':scaffolding:2.1.2', { //  compile ":scaffolding:2.1.2"   ':scaffolding:1.0.0'
 			export = false
 		}
 	}
