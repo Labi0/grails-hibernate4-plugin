@@ -26,7 +26,7 @@ import org.codehaus.groovy.grails.commons.DefaultGrailsDomainClass;
 import org.codehaus.groovy.grails.commons.GrailsDomainClass;
 import org.codehaus.groovy.grails.commons.GrailsDomainClassProperty;
 import org.codehaus.groovy.grails.plugins.MockGrailsPluginManager;
-import org.codehaus.groovy.grails.plugins.PluginManagerHolder;
+import grails.util.Holders;
 
 /**
  * @author Graeme Rocher
@@ -38,14 +38,14 @@ public class DomainClassPropertyComparatorTests extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		MockGrailsPluginManager pluginManager = new MockGrailsPluginManager();
-		PluginManagerHolder.setPluginManager(pluginManager);
+		Holders.setPluginManager(pluginManager);
 		pluginManager.registerMockPlugin(DefaultGrailsTemplateGeneratorTests.fakeHibernatePlugin);
 	}
 
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
-		PluginManagerHolder.setPluginManager(null);
+		Holders.setPluginManager(null);
 	}
 
 	@SuppressWarnings("unchecked")

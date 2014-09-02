@@ -27,7 +27,7 @@ import org.codehaus.groovy.grails.commons.GrailsClassUtils
 import org.codehaus.groovy.grails.commons.GrailsDomainClass
 import org.codehaus.groovy.grails.plugins.GrailsPluginUtils
 import org.codehaus.groovy.grails.plugins.MockGrailsPluginManager
-import org.codehaus.groovy.grails.plugins.PluginManagerHolder
+import grails.util.Holders
 
 /**
  * @author Graeme Rocher
@@ -43,7 +43,7 @@ class GrailsTemplateGeneratorsTests extends TestCase {
 		buildSettings.setProjectPluginsDir(new File("target/plugins"))
 		BuildSettingsHolder.setSettings(buildSettings)
 		MockGrailsPluginManager pluginManager = new MockGrailsPluginManager()
-		PluginManagerHolder.setPluginManager(pluginManager)
+		Holders.setPluginManager(pluginManager)
 		pluginManager.registerMockPlugin(DefaultGrailsTemplateGeneratorTests.fakeHibernatePlugin)
 		generator.basedir = "."
 		generator.setPluginManager(pluginManager)
@@ -53,7 +53,7 @@ class GrailsTemplateGeneratorsTests extends TestCase {
 	@Override
 	protected void tearDown() {
 		BuildSettingsHolder.setSettings(null)
-		PluginManagerHolder.setPluginManager(null)
+		Holders.setPluginManager(null)
 	}
 
 	void testGenerateController() {

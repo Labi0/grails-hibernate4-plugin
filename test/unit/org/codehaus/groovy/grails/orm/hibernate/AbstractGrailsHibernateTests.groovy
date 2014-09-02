@@ -20,7 +20,7 @@ import org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin
 import org.codehaus.groovy.grails.plugins.DefaultPluginMetaManager
 import org.codehaus.groovy.grails.plugins.GrailsPluginManager
 import org.codehaus.groovy.grails.plugins.MockGrailsPluginManager
-import org.codehaus.groovy.grails.plugins.PluginManagerHolder
+import grails.util.Holders
 import org.codehaus.groovy.grails.plugins.PluginMetaManager
 import org.codehaus.groovy.grails.support.MockApplicationContext
 import org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes
@@ -207,7 +207,7 @@ hibernate {
 
 		ExpandoMetaClass.disableGlobally()
 		RequestContextHolder.setRequestAttributes(null)
-		PluginManagerHolder.setPluginManager(null)
+		Holders.setPluginManager(null)
 
 		originalHandler = null
 
@@ -247,7 +247,7 @@ hibernate {
 		mockManager = new MockGrailsPluginManager(ga)
 
 		ctx.registerMockBean("pluginManager", mockManager)
-		PluginManagerHolder.setPluginManager(mockManager)
+		Holders.setPluginManager(mockManager)
 
 		def dependantPluginClasses = []
 		dependantPluginClasses << gcl.loadClass("org.codehaus.groovy.grails.plugins.CoreGrailsPlugin")
